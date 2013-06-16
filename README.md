@@ -27,6 +27,8 @@ Enter area level
 Enter level of party members (for a blank party spot, enter 0)
 Click "Update" button for XP% and currency drop% to be displayed
   Assumes all of party is close enough to receive party benefit
+  Currency % is % chance of currency drop as a direct result of you - does not account for allocation or party member %
+  	chance
 
 Solo:
 Enter player level
@@ -45,7 +47,7 @@ Party Experience % = Sum Party Share/Player Share
 
 Party Final Experience = Final Experience * 1.3 * [1 + ([party size - 1] * .5)] * Party Experience %
 
-Currency Drops = 2.5 * (areaLevel - (playerLevel + 2)
+Currency Drops = 2.5 * (playerLevel - (areaLevel + 2)
 	(caps player level at 68)
 
 Currency/XP amounts rounded to nearest thousandth of a percent.
