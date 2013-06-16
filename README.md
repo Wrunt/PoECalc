@@ -53,7 +53,7 @@ Currency/XP amounts rounded to nearest thousandth of a percent.
 
 ************************************]Contact Information[**************************************************************
 Any questions or concerns can be sent to ayasustanan@gmail.com
-repository at 
+repository at https://github.com/Wrunt/PoECalc
 
 
 ************************************]Version History[******************************************************************
