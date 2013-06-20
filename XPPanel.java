@@ -11,119 +11,13 @@ public class XPPanel extends JPanel {
     public JSlider slider;
     public JButton mGen, sGen;
     public JPanel sc1, sc2, sc3, sc4, sc5;
-    public JPanel mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9, mc10;
+    public JPanel mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9, mc10, sGenPanel;
     public JPanel controls1, controls2;
     
     public Color color1 = new Color(0, 0, 0);
     public Color color2 = new Color(255, 255, 255);
     
     public XPPanel() {
-        super(new GridLayout(1, 1));
-        
-        JTabbedPane tabbedPane = new JTabbedPane();
-        
-        JComponent panel1 = single("Solo");
-        panel1.setBackground(color1);
-        tabbedPane.addTab("Solo", panel1);
-        
-        JComponent panel2 = multi("Party");
-        panel2.setBackground(color1);
-        tabbedPane.addTab("Party", panel2);
-        
-        add (tabbedPane);
-        
-        tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-    }
-    
-    protected JComponent single(String text){
-        playerLevelS = new JLabel ("Player Level:");
-        playerLevelS.setBackground(color1);
-        playerLevelS.setOpaque(true);
-        playerLevelS.setForeground(color2);
-        pLS = new JTextField ("");
-        pLS.setBackground(color2);
-        pLS.setBorder(null);
-        pLS.setForeground(color1);
-        areaLevelS = new JLabel ("Area Level:");
-        areaLevelS.setBackground(color1);
-        areaLevelS.setOpaque(true);
-        areaLevelS.setForeground(color2);
-        aLS = new JTextField ("");
-        aLS.setBackground(color2);
-        aLS.setBorder(null);
-        aLS.setForeground(color1);
-        sGen = new JButton ("Update Amounts");
-        xpS = new JLabel ("Experience Awarded: ");
-        xpS.setBackground(color1);
-        xpS.setOpaque(true);
-        xpS.setForeground(color2);
-        currencyS = new JLabel ("Currency Awarded: ");
-        currencyS.setBackground(color1);
-        currencyS.setOpaque(true);
-        currencyS.setForeground(color2);
-        
-        Dimension d = xpS.getPreferredSize();  
-        playerLevelS.setPreferredSize(new Dimension(d.width,d.height));
-        pLS.setPreferredSize(new Dimension(50, d.height));
-        areaLevelS.setPreferredSize(new Dimension(d.width,d.height));
-        aLS.setPreferredSize(new Dimension(50,d.height));
-        xpS.setPreferredSize(new Dimension(d.width+50,d.height));
-        currencyS.setPreferredSize(new Dimension(d.width+50,d.height));
-        
-        ButtonListenerS listenerS = new ButtonListenerS();
-        sGen.addActionListener (listenerS);
-        
-        sc1 = new JPanel();
-        sc1.add(playerLevelS);
-        sc1.add(pLS);
-        sc2 = new JPanel();
-        sc2.add(areaLevelS);
-        sc2.add(aLS);
-        sc3 = new JPanel();
-        sc3.add(sGen);
-        sc4 = new JPanel();
-        sc4.add(xpS);
-        sc5 = new JPanel();
-        sc5.add(currencyS);
-        
-        sc1.setBackground(color1);
-        sc2.setBackground(color1);
-        sc3.setBackground(color1);
-        sc4.setBackground(color1);
-        sc5.setBackground(color1);
-                
-        controls1 = new JPanel();
-        BoxLayout layout = new BoxLayout (controls1, BoxLayout.Y_AXIS);
-        controls1.setLayout (layout);
-        controls1.add(sc1);
-        controls1.add(sc2);
-        controls1.add(sc3);
-        controls1.add(sc4);
-        controls1.add(sc5);
-        controls1.setBackground(color1);
-        
-        JLabel splash1 = new JLabel(new ImageIcon("PoELogo.jpg"));
-        splash1.setAlignmentX(Component.LEFT_ALIGNMENT);
-        JLabel splash2 = new JLabel(new ImageIcon("PoELogo.jpg"));
-        splash2.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        JLabel spacer = new JLabel("                                                                                                    "
-                + "                                ");
-        spacer.setBackground(color1);
-        spacer.setForeground(color1);
-        spacer.setPreferredSize(new Dimension(400,d.height));
-        JPanel splashPanel1 = new JPanel();
-        BoxLayout layout1 = new BoxLayout (splashPanel1, BoxLayout.X_AXIS);
-        splashPanel1.setLayout (layout1);
-        splashPanel1.add(splash1);
-        splashPanel1.add(spacer);
-        splashPanel1.add(splash2);
-        splashPanel1.setBackground(color1);
-        controls1.add(splashPanel1);
-               
-        return controls1;
-    }
-    
-    protected JComponent multi(String text){
         playerLevelM = new JLabel ("Player Level:");
         playerLevelM.setBackground(color1);
         playerLevelM.setOpaque(true);
@@ -180,6 +74,7 @@ public class XPPanel extends JPanel {
         player5.setBackground(color2);
         player5.setBorder(null);
         player5.setForeground(color1);
+        sGen = new JButton ("Update Amounts");
         mGen = new JButton ("Update Amounts");
         xpM = new JLabel ("Experience Awarded: ");
         xpM.setBackground(color1);
@@ -208,13 +103,15 @@ public class XPPanel extends JPanel {
         xpM.setPreferredSize(new Dimension(d.width+150,d.height));
         currencyM.setPreferredSize(new Dimension(d.width+150,d.height));
              
+        ButtonListenerS listenerS = new ButtonListenerS();
+        sGen.addActionListener (listenerS);
         ButtonListenerM listenerM = new ButtonListenerM();
         mGen.addActionListener (listenerM);
         
         JLabel lSlider = new JLabel("Number of players in party:");
         lSlider.setForeground(color2);
         
-        slider = new JSlider (JSlider.HORIZONTAL, 2, 6, 2);
+        slider = new JSlider (JSlider.HORIZONTAL, 1, 6, 1);
         slider.setMajorTickSpacing (1);
         slider.setPaintTicks (true);
         slider.setPaintLabels (true);
@@ -249,6 +146,8 @@ public class XPPanel extends JPanel {
         mc7 = new JPanel();
         mc7.add(mp5);
         mc7.add(player5);
+        sGenPanel = new JPanel();
+        sGenPanel.add(sGen);
         mc8 = new JPanel();
         mc8.add(mGen);
         mc9 = new JPanel();
@@ -286,11 +185,13 @@ public class XPPanel extends JPanel {
         controls2.add(mc10);
         controls2.setBackground(color1);
         
+        mc3.setVisible(false);
         mc4.setVisible(false);
         mc5.setVisible(false);
         mc6.setVisible(false);
         mc7.setVisible(false);
-        
+        mc8.setVisible(false);
+        sGenPanel.setVisible(true);
         
         JLabel splash1 = new JLabel(new ImageIcon("PoELogo.jpg"));
         splash1.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -309,15 +210,39 @@ public class XPPanel extends JPanel {
         splashPanel1.add(splash2);
         splashPanel1.setBackground(color1);
         controls2.add(splashPanel1);
+        
+        controls2.setBackground(color1);
+        controls2.setForeground(color1);
+        controls2.setBorder(null);
+        controls2.setOpaque(false);
+        
+        controls2.setPreferredSize(new Dimension(500, 500));
                
-        return controls2;
+        add(controls2);
+        
+        setOpaque(false);
     }
     
     public class SlideListenerM implements ChangeListener {
         
         public void stateChanged (ChangeEvent event) {
             switch (slider.getValue()) {
+                case 1:
+                    mc3.setVisible(false);
+                    mc4.setVisible(false);
+                    mc5.setVisible(false);
+                    mc6.setVisible(false);
+                    mc7.setVisible(false);
+                    player1.setText("0");
+                    player2.setText("0");
+                    player3.setText("0");
+                    player4.setText("0");
+                    player5.setText("0");
+                    mc8.setVisible(false);
+                    sGenPanel.setVisible(true);
+                    break;
                 case 2:
+                    mc3.setVisible(true);
                     mc4.setVisible(false);
                     mc5.setVisible(false);
                     mc6.setVisible(false);
@@ -327,8 +252,11 @@ public class XPPanel extends JPanel {
                     player3.setText("0");
                     player4.setText("0");
                     player5.setText("0");
+                    mc8.setVisible(true);
+                    sGenPanel.setVisible(false);
                     break;
                 case 3:
+                    mc3.setVisible(true);
                     mc4.setVisible(true);
                     mc5.setVisible(false);
                     mc6.setVisible(false);
@@ -338,8 +266,11 @@ public class XPPanel extends JPanel {
                     player3.setText("0");
                     player4.setText("0");
                     player5.setText("0");
+                    mc8.setVisible(true);
+                    sGenPanel.setVisible(false);
                     break;
                 case 4:
+                    mc3.setVisible(true);
                     mc4.setVisible(true);
                     mc5.setVisible(true);
                     mc6.setVisible(false);
@@ -349,8 +280,11 @@ public class XPPanel extends JPanel {
                     player3.setText("");
                     player4.setText("0");
                     player5.setText("0");
+                    mc8.setVisible(true);
+                    sGenPanel.setVisible(false);
                     break;
                 case 5:
+                    mc3.setVisible(true);
                     mc4.setVisible(true);
                     mc5.setVisible(true);
                     mc6.setVisible(true);
@@ -360,8 +294,11 @@ public class XPPanel extends JPanel {
                     player3.setText("");
                     player4.setText("");
                     player5.setText("0");
+                    mc8.setVisible(true);
+                    sGenPanel.setVisible(false);
                     break;
                 case 6:
+                    mc3.setVisible(true);
                     mc4.setVisible(true);
                     mc5.setVisible(true);
                     mc6.setVisible(true);
@@ -371,6 +308,8 @@ public class XPPanel extends JPanel {
                     player3.setText("");
                     player4.setText("");
                     player5.setText("");
+                    mc8.setVisible(true);
+                    sGenPanel.setVisible(false);
                     break;
             }
             
