@@ -5,14 +5,13 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 public class XPPanel extends JPanel {
-    public JLabel playerLevelS, playerLevelM, mp1, mp2, mp3, mp4, mp5, areaLevelS, areaLevelM;
-    public JLabel xpS, xpM, currencyS, currencyM;
-    public JTextField pLS, pLM, player1, player2, player3, player4, player5, aLS, aLM;
+    public JLabel playerLevelM, mp1, mp2, mp3, mp4, mp5, areaLevelM;
+    public JLabel xpM, currencyM;
+    public JTextField pLM, player1, player2, player3, player4, player5, aLM;
     public JSlider slider;
     public JButton mGen, sGen;
-    public JPanel sc1, sc2, sc3, sc4, sc5;
     public JPanel mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9, mc10, sGenPanel;
-    public JPanel controls1, controls2;
+    public JPanel controls2;
     
     public Color color1 = new Color(0, 0, 0);
     public Color color2 = new Color(255, 255, 255);
@@ -325,9 +324,9 @@ public class XPPanel extends JPanel {
         private String as, ps;
         
         public void actionPerformed (ActionEvent event) {
-            as = aLS.getText();
+            as = aLM.getText();
             area = Double.parseDouble(as);
-            ps = pLS.getText();
+            ps = pLM.getText();
             pi = Integer.parseInt(ps);
             player = Double.parseDouble(ps);
             
