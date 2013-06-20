@@ -12,38 +12,75 @@ public class XPPanel extends JPanel {
     public JPanel mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9, mc10;
     public JPanel controls1, controls2;
     
+    public Color color1 = new Color(0, 0, 0);
+    public Color color2 = new Color(255, 255, 255);
+    
     public XPPanel() {
         super(new GridLayout(1, 1));
         
+        setOpaque(false);
+        
+        UIManager.put("TabbedPane.contentOpaque", Boolean.FALSE);
+        //UIManager.put("TabbedPane.tabsOpaque", Boolean.FALSE);
         JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI(){
+            //protected void paintContentBorder(Graphics g, int tabPlacement, int selectedIndex){}
+            protected void paintContent(Graphics g, int tabPlacement, int selectedIndex){}
+        });
+        
+        tabbedPane.setOpaque(false);
         
         JComponent panel1 = single("Solo");
+        panel1.setOpaque(false);
         tabbedPane.addTab("Solo", panel1);
         
         JComponent panel2 = multi("Party");
+        panel2.setOpaque(false);
         tabbedPane.addTab("Party", panel2);
+        
+        //tabbedPane.setBackgroundAt(1, Color.white);
+        //tabbedPane.setBackgroundAt(2, Color.white);
+
         
         add (tabbedPane);
         
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
     }
     
-    protected JComponent single(String text) {
+    protected JComponent single(String text){
         playerLevelS = new JLabel ("Player Level:");
+        playerLevelS.setBackground(color1);
+        playerLevelS.setOpaque(true);
+        playerLevelS.setForeground(color2);
         pLS = new JTextField ("");
+        pLS.setBackground(color2);
+        pLS.setBorder(null);
+        pLS.setForeground(color1);
         areaLevelS = new JLabel ("Area Level:");
+        areaLevelS.setBackground(color1);
+        areaLevelS.setOpaque(true);
+        areaLevelS.setForeground(color2);
         aLS = new JTextField ("");
+        aLS.setBackground(color2);
+        aLS.setBorder(null);
+        aLS.setForeground(color1);
         sGen = new JButton ("Update Amounts");
         xpS = new JLabel ("Experience Awarded: ");
+        xpS.setBackground(color1);
+        xpS.setOpaque(true);
+        xpS.setForeground(color2);
         currencyS = new JLabel ("Currency Awarded: ");
+        currencyS.setBackground(color1);
+        currencyS.setOpaque(true);
+        currencyS.setForeground(color2);
         
         Dimension d = xpS.getPreferredSize();  
-        playerLevelS.setPreferredSize(new Dimension(d.width,d.height));
-        pLS.setPreferredSize(new Dimension(d.width,d.height));
-        areaLevelS.setPreferredSize(new Dimension(d.width,d.height));
-        aLS.setPreferredSize(new Dimension(d.width,d.height));
-        xpS.setPreferredSize(new Dimension(d.width+50,d.height));
-        currencyS.setPreferredSize(new Dimension(d.width+50,d.height));
+        //playerLevelS.setPreferredSize(new Dimension(d.width,d.height));
+        pLS.setPreferredSize(new Dimension(50, d.height));
+        //areaLevelS.setPreferredSize(new Dimension(d.width,d.height));
+        aLS.setPreferredSize(new Dimension(50,d.height));
+        //xpS.setPreferredSize(new Dimension(d.width+50,d.height));
+        //currencyS.setPreferredSize(new Dimension(d.width+50,d.height));
         
         ButtonListenerS listenerS = new ButtonListenerS();
         sGen.addActionListener (listenerS);
@@ -61,6 +98,12 @@ public class XPPanel extends JPanel {
         sc5 = new JPanel();
         sc5.add(currencyS);
         
+        sc1.setOpaque(false);
+        sc2.setOpaque(false);
+        sc3.setOpaque(false);
+        sc4.setOpaque(false);
+        sc5.setOpaque(false);
+                
         controls1 = new JPanel();
         BoxLayout layout = new BoxLayout (controls1, BoxLayout.Y_AXIS);
         controls1.setLayout (layout);
@@ -69,46 +112,109 @@ public class XPPanel extends JPanel {
         controls1.add(sc3);
         controls1.add(sc4);
         controls1.add(sc5);
+        controls1.setOpaque(false);
         
         return controls1;
     }
     
-    protected JComponent multi(String text) {
+    protected JComponent multi(String text){
         playerLevelM = new JLabel ("Player Level:");
+        playerLevelM.setBackground(color1);
+        playerLevelM.setOpaque(true);
+        playerLevelM.setForeground(color2);
         pLM = new JTextField ("");
+        pLM.setBackground(color2);
+        pLM.setBorder(null);
+        pLM.setForeground(color1);
         areaLevelM = new JLabel ("Area Level:");
+        areaLevelM.setBackground(color1);
+        areaLevelM.setOpaque(true);
+        areaLevelM.setForeground(color2);
         aLM = new JTextField ("");
+        aLM.setBackground(color2);
+        aLM.setBorder(null);
+        aLM.setForeground(color1);
         mp1 = new JLabel ("Party Member 1:");
+        mp1.setBackground(color1);
+        mp1.setOpaque(true);
+        mp1.setForeground(color2);
         player1 = new JTextField("0");
+        player1.setBackground(color2);
+        player1.setBorder(null);
+        player1.setForeground(color1);
         mp2 = new JLabel ("Party Member 2:");
+        mp2.setBackground(color1);
+        mp2.setOpaque(true);
+        mp2.setForeground(color2);
         player2 = new JTextField("0");
+        player2.setBackground(color2);
+        player2.setBorder(null);
+        player2.setForeground(color1);
         mp3 = new JLabel ("Party Member 3:");
+        mp3.setBackground(color1);
+        mp3.setOpaque(true);
+        mp3.setForeground(color2);
         player3 = new JTextField("0");
+        player3.setBackground(color2);
+        player3.setBorder(null);
+        player3.setForeground(color1);
         mp4 = new JLabel ("Party Member 4:");
+        mp4.setBackground(color1);
+        mp4.setOpaque(true);
+        mp4.setForeground(color2);
         player4 = new JTextField("0");
+        player4.setBackground(color2);
+        player4.setBorder(null);
+        player4.setForeground(color1);
         mp5 = new JLabel ("Party Member 5:");
+        mp5.setBackground(color1);
+        mp5.setOpaque(true);
+        mp5.setForeground(color2);
         player5 = new JTextField("0");
+        player5.setBackground(color2);
+        player5.setBorder(null);
+        player5.setForeground(color1);
         mGen = new JButton ("Update Amounts");
         xpM = new JLabel ("Experience Awarded: ");
+        xpM.setBackground(color1);
+        xpM.setOpaque(true);
+        xpM.setForeground(color2);
         currencyM = new JLabel ("Currency Awarded: ");
+        currencyM.setBackground(color1);
+        currencyM.setOpaque(true);
+        currencyM.setForeground(color2);
         
         Dimension d = xpM.getPreferredSize();  
-        playerLevelM.setPreferredSize(new Dimension(d.width,d.height));
-        pLM.setPreferredSize(new Dimension(d.width,d.height));
-        areaLevelM.setPreferredSize(new Dimension(d.width,d.height));
-        aLM.setPreferredSize(new Dimension(d.width,d.height));
-        mp1.setPreferredSize(new Dimension(d.width,d.height));
-        player1.setPreferredSize(new Dimension(d.width,d.height));
-        mp2.setPreferredSize(new Dimension(d.width,d.height));
-        player2.setPreferredSize(new Dimension(d.width,d.height));
-        mp3.setPreferredSize(new Dimension(d.width,d.height));
-        player3.setPreferredSize(new Dimension(d.width,d.height));
-        mp4.setPreferredSize(new Dimension(d.width,d.height));
-        player4.setPreferredSize(new Dimension(d.width,d.height));
-        mp5.setPreferredSize(new Dimension(d.width,d.height));
-        player5.setPreferredSize(new Dimension(d.width,d.height));
-        xpM.setPreferredSize(new Dimension(d.width+150,d.height));
-        currencyM.setPreferredSize(new Dimension(d.width+150,d.height));
+        //playerLevelM.setPreferredSize(new Dimension(d.width,d.height));
+        pLM.setPreferredSize(new Dimension(50,d.height));
+        //areaLevelM.setPreferredSize(new Dimension(d.width,d.height));
+        aLM.setPreferredSize(new Dimension(50,d.height));
+        //mp1.setPreferredSize(new Dimension(d.width,d.height));
+        player1.setPreferredSize(new Dimension(50,d.height));
+        //mp2.setPreferredSize(new Dimension(d.width,d.height));
+        player2.setPreferredSize(new Dimension(50,d.height));
+        //mp3.setPreferredSize(new Dimension(d.width,d.height));
+        player3.setPreferredSize(new Dimension(50,d.height));
+        //mp4.setPreferredSize(new Dimension(d.width,d.height));
+        player4.setPreferredSize(new Dimension(50,d.height));
+        //mp5.setPreferredSize(new Dimension(d.width,d.height));
+        player5.setPreferredSize(new Dimension(50,d.height));
+        //xpM.setPreferredSize(new Dimension(d.width+150,d.height));
+        //currencyM.setPreferredSize(new Dimension(d.width+150,d.height));
+             
+        ButtonListenerM listenerM = new ButtonListenerM();
+        mGen.addActionListener (listenerM);
+        
+        JLabel splash = new JLabel() {
+            public void paintComponent(Graphics g) {
+                ImageIcon PoESplash = new ImageIcon("pathofexile512.png");
+                g.drawImage(PoESplash.getImage(), -10, -10, null);
+                super.paintComponent(g);
+            }
+        };
+        
+        splash.setOpaque(false);
+        splash.setText("Text1");
         
         mc1 = new JPanel();
         mc1.add(playerLevelM);
@@ -137,13 +243,22 @@ public class XPPanel extends JPanel {
         mc9.add(xpM);
         mc10 = new JPanel();
         mc10.add(currencyM);
-             
-        ButtonListenerM listenerM = new ButtonListenerM();
-        mGen.addActionListener (listenerM);
+        
+        mc1.setOpaque(false);
+        mc2.setOpaque(false);
+        mc3.setOpaque(false);
+        mc4.setOpaque(false);
+        mc5.setOpaque(false);
+        mc6.setOpaque(false);
+        mc7.setOpaque(false);
+        mc8.setOpaque(false);
+        mc9.setOpaque(false);
+        mc10.setOpaque(false);
         
         controls2 = new JPanel();
         BoxLayout layout = new BoxLayout (controls2, BoxLayout.Y_AXIS);
         controls2.setLayout (layout);
+        //controls2.add(splash);
         controls2.add(mc1);
         controls2.add(mc2);
         controls2.add(mc3);
@@ -154,7 +269,8 @@ public class XPPanel extends JPanel {
         controls2.add(mc8);
         controls2.add(mc9);
         controls2.add(mc10);
-        
+        controls2.setOpaque(false);
+               
         return controls2;
     }
     
