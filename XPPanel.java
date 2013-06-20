@@ -164,6 +164,7 @@ public class XPPanel extends JPanel {
         mc5.setBackground(color1);
         mc6.setBackground(color1);
         mc7.setBackground(color1);
+        sGenPanel.setBackground(color1);
         mc8.setBackground(color1);
         mc9.setBackground(color1);
         mc10.setBackground(color1);
@@ -180,6 +181,7 @@ public class XPPanel extends JPanel {
         controls2.add(mc5);
         controls2.add(mc6);
         controls2.add(mc7);
+        controls2.add(sGenPanel);
         controls2.add(mc8);
         controls2.add(mc9);
         controls2.add(mc10);
@@ -359,8 +361,8 @@ public class XPPanel extends JPanel {
                 curr = (double)(Math.round(curr*1000))/1000;
             }
             
-            xpS.setText("Experience Awarded: " + xp + "%");
-            currencyS.setText("Currency Awarded:   " + curr + "%");
+            xpM.setText("Experience Awarded: " + xp + "%");
+            currencyM.setText("Currency Awarded:   " + curr + "%");
         }
     }
     
