@@ -59,6 +59,7 @@ repository at https://github.com/Wrunt/PoECalc
 
 
 ************************************]Version History[******************************************************************
+v1.4 - new feature (slider for player #) implemented
 v1.3 - cleaned backdrop version - smaller picture w/ black background
 v1.2 - now with backdrop!
 v1.1 - fixed issue with currency amount for area levels near player level
