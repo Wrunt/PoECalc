@@ -324,6 +324,15 @@ public class XPPanel extends JPanel {
         private String as, ps;
         
         public void actionPerformed (ActionEvent event) {
+            ps = "";
+            as = "";
+            area = 0;
+            pi = 0;
+            player = 0;
+            xp = 0;
+            ED = 0;
+            check = 0;
+            
             as = aLM.getText();
             area = Double.parseDouble(as);
             ps = pLM.getText();
@@ -373,7 +382,15 @@ public class XPPanel extends JPanel {
         private String as, ps, p1s, p2s, p3s, p4s, p5s;
         
         public void actionPerformed (ActionEvent event) {
+            ps = "";
+            as = "";
+            area = 0;
+            pi = 0;
+            player = 0;
+            ED = 0;
+            xp = 0;
             pSize = 6;
+            check = 0;
             
             p1s = player1.getText();
             p1 = Double.parseDouble(p1s);
