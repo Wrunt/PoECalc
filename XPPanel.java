@@ -2,11 +2,13 @@ package poe.xp.and.currency;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 public class XPPanel extends JPanel {
     public JLabel playerLevelS, playerLevelM, mp1, mp2, mp3, mp4, mp5, areaLevelS, areaLevelM;
     public JLabel xpS, xpM, currencyS, currencyM;
     public JTextField pLS, pLM, player1, player2, player3, player4, player5, aLS, aLM;
+    public JSlider slider;
     public JButton mGen, sGen;
     public JPanel sc1, sc2, sc3, sc4, sc5;
     public JPanel mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9, mc10;
@@ -98,12 +100,25 @@ public class XPPanel extends JPanel {
         controls1.add(sc3);
         controls1.add(sc4);
         controls1.add(sc5);
-        //controls1.setOpaque(false);
         controls1.setBackground(color1);
         
-        JLabel splash = new JLabel(new ImageIcon("PoELogo.jpg"));
-        splash.setBounds(450, 500, 450, 500);
-        controls1.add(splash);
+        JLabel splash1 = new JLabel(new ImageIcon("PoELogo.jpg"));
+        splash1.setAlignmentX(Component.LEFT_ALIGNMENT);
+        JLabel splash2 = new JLabel(new ImageIcon("PoELogo.jpg"));
+        splash2.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        JLabel spacer = new JLabel("                                                                                                    "
+                + "                                ");
+        spacer.setBackground(color1);
+        spacer.setForeground(color1);
+        spacer.setPreferredSize(new Dimension(400,d.height));
+        JPanel splashPanel1 = new JPanel();
+        BoxLayout layout1 = new BoxLayout (splashPanel1, BoxLayout.X_AXIS);
+        splashPanel1.setLayout (layout1);
+        splashPanel1.add(splash1);
+        splashPanel1.add(spacer);
+        splashPanel1.add(splash2);
+        splashPanel1.setBackground(color1);
+        controls1.add(splashPanel1);
                
         return controls1;
     }
@@ -196,12 +211,29 @@ public class XPPanel extends JPanel {
         ButtonListenerM listenerM = new ButtonListenerM();
         mGen.addActionListener (listenerM);
         
+        JLabel lSlider = new JLabel("Number of players in party:");
+        lSlider.setForeground(color2);
+        
+        slider = new JSlider (JSlider.HORIZONTAL, 2, 6, 2);
+        slider.setMajorTickSpacing (1);
+        slider.setPaintTicks (true);
+        slider.setPaintLabels (true);
+        slider.setForeground(color2);
+        slider.setBackground(color1);
+        
+        SlideListenerM listener = new SlideListenerM();
+        slider.addChangeListener(listener);
+        
         mc1 = new JPanel();
         mc1.add(playerLevelM);
         mc1.add(pLM);
         mc2 = new JPanel();
         mc2.add(areaLevelM);
         mc2.add(aLM);
+        JPanel slidecontrol1 = new JPanel();
+        slidecontrol1.add(lSlider);
+        JPanel slidecontrol2 = new JPanel();
+        slidecontrol2.add(slider);
         mc3 = new JPanel();
         mc3.add(mp1);
         mc3.add(player1);
@@ -226,6 +258,8 @@ public class XPPanel extends JPanel {
         
         mc1.setBackground(color1);
         mc2.setBackground(color1);
+        slidecontrol1.setBackground(color1);
+        slidecontrol2.setBackground(color1);
         mc3.setBackground(color1);
         mc4.setBackground(color1);
         mc5.setBackground(color1);
@@ -240,6 +274,8 @@ public class XPPanel extends JPanel {
         controls2.setLayout (layout);
         controls2.add(mc1);
         controls2.add(mc2);
+        controls2.add(slidecontrol1);
+        controls2.add(slidecontrol2);
         controls2.add(mc3);
         controls2.add(mc4);
         controls2.add(mc5);
@@ -250,11 +286,96 @@ public class XPPanel extends JPanel {
         controls2.add(mc10);
         controls2.setBackground(color1);
         
-        JLabel splash = new JLabel(new ImageIcon("PoELogo.jpg"));
-        splash.setBounds(450, 500, 450, 500);
-        controls2.add(splash);
+        mc4.setVisible(false);
+        mc5.setVisible(false);
+        mc6.setVisible(false);
+        mc7.setVisible(false);
+        
+        
+        JLabel splash1 = new JLabel(new ImageIcon("PoELogo.jpg"));
+        splash1.setAlignmentX(Component.LEFT_ALIGNMENT);
+        JLabel splash2 = new JLabel(new ImageIcon("PoELogo.jpg"));
+        splash2.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        JLabel spacer = new JLabel("                                                                                                    "
+                + "                                ");
+        spacer.setBackground(color1);
+        spacer.setForeground(color1);
+        spacer.setPreferredSize(new Dimension(400,d.height));
+        JPanel splashPanel1 = new JPanel();
+        BoxLayout layout1 = new BoxLayout (splashPanel1, BoxLayout.X_AXIS);
+        splashPanel1.setLayout (layout1);
+        splashPanel1.add(splash1);
+        splashPanel1.add(spacer);
+        splashPanel1.add(splash2);
+        splashPanel1.setBackground(color1);
+        controls2.add(splashPanel1);
                
         return controls2;
+    }
+    
+    public class SlideListenerM implements ChangeListener {
+        
+        public void stateChanged (ChangeEvent event) {
+            switch (slider.getValue()) {
+                case 2:
+                    mc4.setVisible(false);
+                    mc5.setVisible(false);
+                    mc6.setVisible(false);
+                    mc7.setVisible(false);
+                    player1.setText("");
+                    player2.setText("0");
+                    player3.setText("0");
+                    player4.setText("0");
+                    player5.setText("0");
+                    break;
+                case 3:
+                    mc4.setVisible(true);
+                    mc5.setVisible(false);
+                    mc6.setVisible(false);
+                    mc7.setVisible(false);
+                    player1.setText("");
+                    player2.setText("");
+                    player3.setText("0");
+                    player4.setText("0");
+                    player5.setText("0");
+                    break;
+                case 4:
+                    mc4.setVisible(true);
+                    mc5.setVisible(true);
+                    mc6.setVisible(false);
+                    mc7.setVisible(false);
+                    player1.setText("");
+                    player2.setText("");
+                    player3.setText("");
+                    player4.setText("0");
+                    player5.setText("0");
+                    break;
+                case 5:
+                    mc4.setVisible(true);
+                    mc5.setVisible(true);
+                    mc6.setVisible(true);
+                    mc7.setVisible(false);
+                    player1.setText("");
+                    player2.setText("");
+                    player3.setText("");
+                    player4.setText("");
+                    player5.setText("0");
+                    break;
+                case 6:
+                    mc4.setVisible(true);
+                    mc5.setVisible(true);
+                    mc6.setVisible(true);
+                    mc7.setVisible(true);
+                    player1.setText("");
+                    player2.setText("");
+                    player3.setText("");
+                    player4.setText("");
+                    player5.setText("");
+                    break;
+            }
+            
+            
+        }
     }
     
     public class ButtonListenerS implements ActionListener {

@@ -11,7 +11,7 @@ public class PoEXPAndCurrency extends JFrame {
    
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.setTitle("PoE - XP/Currency % by Level v 1.3");
+        frame.setTitle("PoE - XP/Currency % by Level v 1.4");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(500,500));        
         
