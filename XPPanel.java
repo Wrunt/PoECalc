@@ -190,7 +190,7 @@ public class XPPanel extends JPanel {
             
             if (area > 68) {
                 curr = 100;
-            } else if (area >= player) {
+            } else if (area + 2 >= player) {
                 curr = 100;
             } else if (player > 68) {
                 curr = 100 - (2.5 * (68 - (area + 2)));
@@ -201,7 +201,7 @@ public class XPPanel extends JPanel {
             }
             
             xpS.setText("Experience Awarded: " + xp + "%");
-            currencyS.setText("Currency Awarded: " + curr + "%");
+            currencyS.setText("Currency Awarded:   " + curr + "%");
         }
     }
     
@@ -310,7 +310,7 @@ public class XPPanel extends JPanel {
             
             if (area > 68) {
                 curr = 100;
-            } else if (area >= player) {
+            } else if (area + 2 >= player) {
                 curr = 100;
             } else if (player > 68) {
                 curr = 100 - (2.5 * (68 - (area + 2)));
@@ -321,7 +321,7 @@ public class XPPanel extends JPanel {
             }
             
             xpM.setText("Experience Awarded: " + xp + "%");
-            currencyM.setText("Currency Awarded: " + curr + "%");
+            currencyM.setText("Currency Awarded:   " + curr + "%");
         }
     }
     

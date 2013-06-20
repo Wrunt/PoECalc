@@ -10,7 +10,7 @@ import javax.swing.*;
 public class PoEXPAndCurrency {
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame ("PoE - XP/Currency % by Level v 1.0");
+        JFrame frame = new JFrame ("PoE - XP/Currency % by Level v 1.1");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.setMinimumSize(new Dimension(400,350));
         
