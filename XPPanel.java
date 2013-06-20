@@ -18,29 +18,15 @@ public class XPPanel extends JPanel {
     public XPPanel() {
         super(new GridLayout(1, 1));
         
-        setOpaque(false);
-        
-        UIManager.put("TabbedPane.contentOpaque", Boolean.FALSE);
-        //UIManager.put("TabbedPane.tabsOpaque", Boolean.FALSE);
         JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI(){
-            //protected void paintContentBorder(Graphics g, int tabPlacement, int selectedIndex){}
-            protected void paintContent(Graphics g, int tabPlacement, int selectedIndex){}
-        });
-        
-        tabbedPane.setOpaque(false);
         
         JComponent panel1 = single("Solo");
-        panel1.setOpaque(false);
+        panel1.setBackground(color1);
         tabbedPane.addTab("Solo", panel1);
         
         JComponent panel2 = multi("Party");
-        panel2.setOpaque(false);
+        panel2.setBackground(color1);
         tabbedPane.addTab("Party", panel2);
-        
-        //tabbedPane.setBackgroundAt(1, Color.white);
-        //tabbedPane.setBackgroundAt(2, Color.white);
-
         
         add (tabbedPane);
         
@@ -75,12 +61,12 @@ public class XPPanel extends JPanel {
         currencyS.setForeground(color2);
         
         Dimension d = xpS.getPreferredSize();  
-        //playerLevelS.setPreferredSize(new Dimension(d.width,d.height));
+        playerLevelS.setPreferredSize(new Dimension(d.width,d.height));
         pLS.setPreferredSize(new Dimension(50, d.height));
-        //areaLevelS.setPreferredSize(new Dimension(d.width,d.height));
+        areaLevelS.setPreferredSize(new Dimension(d.width,d.height));
         aLS.setPreferredSize(new Dimension(50,d.height));
-        //xpS.setPreferredSize(new Dimension(d.width+50,d.height));
-        //currencyS.setPreferredSize(new Dimension(d.width+50,d.height));
+        xpS.setPreferredSize(new Dimension(d.width+50,d.height));
+        currencyS.setPreferredSize(new Dimension(d.width+50,d.height));
         
         ButtonListenerS listenerS = new ButtonListenerS();
         sGen.addActionListener (listenerS);
@@ -98,11 +84,11 @@ public class XPPanel extends JPanel {
         sc5 = new JPanel();
         sc5.add(currencyS);
         
-        sc1.setOpaque(false);
-        sc2.setOpaque(false);
-        sc3.setOpaque(false);
-        sc4.setOpaque(false);
-        sc5.setOpaque(false);
+        sc1.setBackground(color1);
+        sc2.setBackground(color1);
+        sc3.setBackground(color1);
+        sc4.setBackground(color1);
+        sc5.setBackground(color1);
                 
         controls1 = new JPanel();
         BoxLayout layout = new BoxLayout (controls1, BoxLayout.Y_AXIS);
@@ -112,8 +98,13 @@ public class XPPanel extends JPanel {
         controls1.add(sc3);
         controls1.add(sc4);
         controls1.add(sc5);
-        controls1.setOpaque(false);
+        //controls1.setOpaque(false);
+        controls1.setBackground(color1);
         
+        JLabel splash = new JLabel(new ImageIcon("PoELogo.jpg"));
+        splash.setBounds(450, 500, 450, 500);
+        controls1.add(splash);
+               
         return controls1;
     }
     
@@ -185,36 +176,25 @@ public class XPPanel extends JPanel {
         currencyM.setForeground(color2);
         
         Dimension d = xpM.getPreferredSize();  
-        //playerLevelM.setPreferredSize(new Dimension(d.width,d.height));
+        playerLevelM.setPreferredSize(new Dimension(d.width,d.height));
         pLM.setPreferredSize(new Dimension(50,d.height));
-        //areaLevelM.setPreferredSize(new Dimension(d.width,d.height));
+        areaLevelM.setPreferredSize(new Dimension(d.width,d.height));
         aLM.setPreferredSize(new Dimension(50,d.height));
-        //mp1.setPreferredSize(new Dimension(d.width,d.height));
+        mp1.setPreferredSize(new Dimension(d.width,d.height));
         player1.setPreferredSize(new Dimension(50,d.height));
-        //mp2.setPreferredSize(new Dimension(d.width,d.height));
+        mp2.setPreferredSize(new Dimension(d.width,d.height));
         player2.setPreferredSize(new Dimension(50,d.height));
-        //mp3.setPreferredSize(new Dimension(d.width,d.height));
+        mp3.setPreferredSize(new Dimension(d.width,d.height));
         player3.setPreferredSize(new Dimension(50,d.height));
-        //mp4.setPreferredSize(new Dimension(d.width,d.height));
+        mp4.setPreferredSize(new Dimension(d.width,d.height));
         player4.setPreferredSize(new Dimension(50,d.height));
-        //mp5.setPreferredSize(new Dimension(d.width,d.height));
+        mp5.setPreferredSize(new Dimension(d.width,d.height));
         player5.setPreferredSize(new Dimension(50,d.height));
-        //xpM.setPreferredSize(new Dimension(d.width+150,d.height));
-        //currencyM.setPreferredSize(new Dimension(d.width+150,d.height));
+        xpM.setPreferredSize(new Dimension(d.width+150,d.height));
+        currencyM.setPreferredSize(new Dimension(d.width+150,d.height));
              
         ButtonListenerM listenerM = new ButtonListenerM();
         mGen.addActionListener (listenerM);
-        
-        JLabel splash = new JLabel() {
-            public void paintComponent(Graphics g) {
-                ImageIcon PoESplash = new ImageIcon("pathofexile512.png");
-                g.drawImage(PoESplash.getImage(), -10, -10, null);
-                super.paintComponent(g);
-            }
-        };
-        
-        splash.setOpaque(false);
-        splash.setText("Text1");
         
         mc1 = new JPanel();
         mc1.add(playerLevelM);
@@ -244,21 +224,20 @@ public class XPPanel extends JPanel {
         mc10 = new JPanel();
         mc10.add(currencyM);
         
-        mc1.setOpaque(false);
-        mc2.setOpaque(false);
-        mc3.setOpaque(false);
-        mc4.setOpaque(false);
-        mc5.setOpaque(false);
-        mc6.setOpaque(false);
-        mc7.setOpaque(false);
-        mc8.setOpaque(false);
-        mc9.setOpaque(false);
-        mc10.setOpaque(false);
+        mc1.setBackground(color1);
+        mc2.setBackground(color1);
+        mc3.setBackground(color1);
+        mc4.setBackground(color1);
+        mc5.setBackground(color1);
+        mc6.setBackground(color1);
+        mc7.setBackground(color1);
+        mc8.setBackground(color1);
+        mc9.setBackground(color1);
+        mc10.setBackground(color1);
         
         controls2 = new JPanel();
         BoxLayout layout = new BoxLayout (controls2, BoxLayout.Y_AXIS);
         controls2.setLayout (layout);
-        //controls2.add(splash);
         controls2.add(mc1);
         controls2.add(mc2);
         controls2.add(mc3);
@@ -269,7 +248,11 @@ public class XPPanel extends JPanel {
         controls2.add(mc8);
         controls2.add(mc9);
         controls2.add(mc10);
-        controls2.setOpaque(false);
+        controls2.setBackground(color1);
+        
+        JLabel splash = new JLabel(new ImageIcon("PoELogo.jpg"));
+        splash.setBounds(450, 500, 450, 500);
+        controls2.add(splash);
                
         return controls2;
     }
